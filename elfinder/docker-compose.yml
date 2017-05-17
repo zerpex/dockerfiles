@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+############
+# elFinder #
+############
+
+   elfinder:
+    image: uphy/elfinder
+    container_name: tools-filer_elfinder
+    hostname: elfinder
+    volumes:
+      - /data/cloud/files/data/aelhynne/files:/data
+      - /data/media:/data/media
+      - /data/incoming:/data/incoming
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    environment:
+      - UID=1069
+      - GID=1069
+      - TZ=Europe/Paris
+    ports:
+      - 5505:80
+
+volumes:
+  files:
+    driver: local
